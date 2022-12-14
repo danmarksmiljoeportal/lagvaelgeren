@@ -9,11 +9,11 @@ Welcome to DataDeling - A complete solution to catalogue Datasets and UI compone
 
 DataDeling consists of three high level parts:
 
-* LV - Lagvælger - Vue 3 reusable component as npm package
-* DB - Databutik - Vue 3 reusable component as npm package
-* DKS - DataKatalogService - REST service providing an API to access a catalog of Datasets
+* Lagvælger - Vue 3 reusable component as npm package
+* Databutik - Vue 3 reusable component as npm package
+* Datakatalog service - REST service providing an API to access a catalog of Datasets
 
-Currently, the only publicly available part is the DKS - DataKatalogService.
+Currently, the only publicly available part is the Datakatalog service.
 
 # Getting Started
 
@@ -21,7 +21,7 @@ Currently, the only publicly available part is the DKS - DataKatalogService.
 LV and DB can be integrated into most web client projects as demonstrated by example code [here](./examples) via npm package `@dmp/lagvaelger-client-ui`.
 -->
 
-The DKS service API is formally described and documented [here](https://datakatalog.miljoeportal.dk/api/swagger).
+The Datakatalog service API is formally described and documented [here](https://datakatalog.miljoeportal.dk/api/swagger).
 
 A basic example request is `https://datakatalog.miljoeportal.dk/api/datasets?include=wmsSource` which will give you all datasets in the catalog including metadata about associated WMS service if exists.
 
