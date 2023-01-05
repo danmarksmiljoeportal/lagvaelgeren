@@ -9,7 +9,7 @@ Welcome to DataDeling - A complete solution to catalogue Datasets and UI compone
 
 DataDeling consists of three high level parts:
 
-* Lagvælger - Vue 3 reusable component as npm package
+* Lagvælger - Vue 3 reusable components as npm package
 * Databutik - Vue 3 reusable component as npm package
 * Datakatalog service - REST service providing an API to access a catalog of Datasets
 
@@ -29,16 +29,6 @@ A basic example request is `https://datakatalog.miljoeportal.dk/api/datasets?inc
 As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic
 that has been used to implement LV and DB. This package also has API documentation which can be [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/index.html).
 -->
-
-# lagvaelger-client-ui
-
-This is a Vue component for reuse in dependent projects.
-
-## Development
-
-If you want to use this package as a local dependency, you can run `npm link` then `npm link @dmp/lagvaelger-client-ui` in the dependent project.
-
-However, note that it is the built modules that are depended on so you must run `npm run build` for changes to be effective.
 
 ## Implementation documentation
 
