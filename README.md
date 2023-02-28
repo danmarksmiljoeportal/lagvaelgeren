@@ -7,19 +7,20 @@
 
 Welcome to DataDeling - A complete solution to catalogue Datasets and UI components to display and interact with them in a web client environment.
 
-DataDeling consists of four high level parts:
+DataDeling consists of three system components:
 
-1. [Datakatalog service](doc/backend) - REST service providing an API to access a catalog of Datasets
-2. [Client API](doc/frontend#client-api) - Typescript package as npm package
-3. [UI components](doc/frontend#ui-components) - Vue 3 reusable components as npm package
-  - LayerControl (Lagvælger or LV)
-  - DataStore (Databutik or DB)
-  - Attribution
-  - LayerToggle
+1. [UI components](doc/frontend#ui-components) - Vue 3 reusable components as npm package which use the API package
+   * LayerControl (Lagvælger or LV)
+   * DataStore (Databutik or DB)
+   * Attribution
+   * LayerToggle
+2. [Client API](doc/frontend#client-api) - TypeScript API npm package offering a high level API to access the Datakatalog service
+3. [Datakatalog service](doc/backend) - REST API service providing access to a catalog of Datasets
+
+It's possible to integrate using only the Datakatalog service but it requires more knowledge of the data model and use cases. The UI components are high level and can easily be integrated in web based solutions.
 
 The underlying data model used in DataDelning is formally documented [here](doc/datamodel).
 
 ## FAQ
 
 - Only EPSG:25832 is used. Other projections aren't supported.
-
