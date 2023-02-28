@@ -17,7 +17,7 @@ DataDeling consists of four high level parts:
   - Attribution
   - LayerToggle
 
-The underlying data model used in DataDelning is formally documented [herel](doc/datamodel).
+The underlying data model used in DataDelning is formally documented [here](doc/datamodel).
 
 ## FAQ
 
