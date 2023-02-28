@@ -16,5 +16,5 @@ DataDeling consists of four high level parts:
 
 ## FAQ
 
-- Only EPSG:25832 is used. Other projections isn't supported.
+- Only EPSG:25832 is used. Other projections aren't supported.
 
