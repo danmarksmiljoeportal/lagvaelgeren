@@ -1,41 +1,46 @@
-## NPM Vue 3 reusable component packages
+# NPM reusable packages
+
+## Client API
+
+As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic that has been used to implement LayerControl and the DataStore. This package also has API documentation which can be [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/index.html). The client API models the data in the catalog service and handles all requests for the service. Furthermore it includes several helper functions that can be used creating applications. 
 
 ### Install
+To install the Client API use npm like this:
 
-Add the UI component using:
-```sh
-npm install @dmp/lagvaelger-client-ui
-```
-
-I rare accations, like when using [Ember](https://emberjs.com/), you need to add API as well:
-```sh
+```shell
 npm install @dmp/lagvaelger-client-api
 ```
-
-### Client Api
 
 Basic use of the Client API:
 
 ```javascript
+import { Api } from '@dmp/lagvaelger-client-api'
+
 const api = new Api()
 ```
 
 See the [Client API documentation](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Api.html) for detailed information.
 
-The Client API and the components can be used with or without a map. Normaly it is used in combination with a map. A map can be created using a variety of map libraries. The most common is [OpenLayers](https://openlayers.org/) and the Client API is build around OpenLayers to make it easy to use. Other libraries, like [MapLibre](https://maplibre.org/) can be used, but you need to do more of the implementation youself.
+The Client API and the components can be used with or without a map. Normally it is used in combination with a map. A map can be created using a variety of map libraries. The most common is [OpenLayers](https://openlayers.org/) and the Client API is build around OpenLayers to make it easy to use. Other libraries, like [MapLibre](https://maplibre.org/) can be used, but you need to do more of the implementation youself.
 
 The Datacatalog contains some datasets, that are not renderable, like zip-file. If the Client API is purely used for map rendering, you need to add the `onlyRenderable` when instantiating the Client API like this:
 
 ```javascript
+import { Api } from '@dmp/lagvaelger-client-api'
+
 const api = new Api({
   onlyRenderable: true,
 })
 ```
-Then only renderable datasets will be used.
+Then only renderable datasets will be available to the user.
+
+### DatasetState
 
 The default active datasets are defined by adding a [datasetState](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/interfaces/_internal_.DatasetState.html) like this:
 
 ```javascript
+import { Api } from '@dmp/lagvaelger-client-api'
+
 const api = new Api({
   onlyRenderable: true,
   datasetState: [
@@ -48,7 +53,7 @@ const api = new Api({
 })
 ```
 
-Call the `api.load()` method is called to initialize the state of the active datasets. Changes to the active datasets are stored in local storage in the browser. By calling `load` witout arguments, local storage is read and used as current datasetState:
+Call the `api.load()` method to initialize the state of the active datasets. Changes to the active datasets are stored in local storage in the browser. By calling `load` witout arguments, local storage is read and used as current datasetState:
 ```javascript
 api.load()
 ```
@@ -64,23 +69,147 @@ api.load([
 ])
 ```
 
+### OpenLayers
+
 To use the Client API with [OpenLayers](https://openlayers.org/), the active datasets can be added to the map with:
 ```javascript
-const layerGroup = api.getOlGroup()
-map.addLayer(layerGroup)
+import Map from 'ol/Map'
+import View from 'ol/View'
+import { Api, projections } from '@dmp/lagvaelger-client-api'
+
+const api = new Api({
+  onlyRenderable: true,
+})
+
+const map = new Map({
+  target: 'map',
+  layers: [api.getOlGroup()],
+  view: new View({
+    center: [601283, 6206304],
+    zoom: 3,
+    projection: projections[25832].projection,
+  }),
+})
+
+map.addLayer(api.getOlGroup())
 ```
 
 The `layerGroup` is a collection that the Client API is maintaining. By adding the layers as a group, the Client API can change and reorder the internal layers as needed.
 
-#### Events
+On each dataset, there are a [getOlLayer](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Dataset.html#getOlLayer) method that will create an OpenLayers layer. This can be used if you are creating your own layer control or a more specific map like an overview map.
 
-If the application need to know when something changes in the Client API, there at multiple event to listen to. Read more [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Api.html#on).
+### Events
+
+If the application need to know when something changes in the Client API, there at multiple event to listen to. Read more [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Api.html#on). There are events directly on the API but there are also events on each dataset.
+
+### Query
+
+The API contains functionality to query a single dataset or a liste of datasets. This can be used for something like click in the map to show information about the datasets visible in that location. But it can also be used for other kinds of quering.
+
+To query all visible datasets by a specific coordinate, use somthing like this:
+
+```javascript
+  const promises = api.queryByCoordinate(coordinate, undefined, {
+    buffer: 1,
+    resolution: map.getView().getResolution()
+  })
+  const result = await Promise.all(promises)
+```
+Other query methods can be used like `queryByExtent` or the full flexible `query` for queriing with more advanced filters, both spatial and/or attribute filters.
+
+A `query` can be found on a dataset as well.
+
+By using this functionality, you don't need to know anything about the datasource and how to make the request.
+
+### Download
+
+The Client API contains a helper function that makes it possible to download a list of datasets as a QGIS project. This makes it easier to continue work in a desktop application. In your application add something like this:
+
+```javascript
+import { saveToQgs } from '@dmp/lagvaelger-client-api'
+
+saveToQgs({ 
+  name: 'download',
+  datasets,
+})
+```
+Read more about the option [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/functions/saveToQgs.html).
+
+### Custom datasets
+
+TBD
+
+
+## UI Components
+
+The UI components consists of multiple components, that can be used independently from each other as stand alone or in combination. All components are using the Client API to get access to the Datacatalog service and handling state.
+
+The UI components can be integrated into most web client projects as demonstrated by example code [here](./examples) via npm package `@dmp/lagvaelger-client-ui`.
+
+The use of the following components depend on witch framework you are using. These examples are using [Vue.js](https://vuejs.org/), but the main principals are the same ind Vanilla JavaScript, EmberJS, Angular and other frameworks.
+
+In all the components you need an instance of the Client API that can be created as described above.
+
+### LayerControl
+
+The layer control component is a simple, user friendly UI that gives the user the ability to control the state og each dataset. The state contains information about witch datasets is available in the UI, if the datasets are visible or not and the order of the datasets.
+
+The content of the LayerControl can be modified by the application if needed. But it is possible to add datasets to the UI by using the DataStore component.
+
+Basic implementation:
+```javascript
+import { Api } from '@dmp/lagvaelger-client-api'
+import { Lagvaelger } from '@dmp/lagvaelger-client-ui'
+import '@dmp/lagvaelger-client-ui/style.css'
+
+const api = new Api({
+  onlyRenderable: true,
+})
+api.load()
+```
+
+In the `template` add the component with a reference to the Client API, that the component should use:
+```html
+<Lagvaelger :api="api"/>
+```
+
+Thas is all you need.
+
+If you are using the OpenLayers like descibed above, you can add a reactive property with the current resolution to the component. Then the component will indicate if the dataset is visible in the current zoom level:
+```javascript
+const currentResolution = ref<number>()
+map.on('moveend', () => currentResolution.value = map.getView().getResolution())
+```
+
+```html
+<Lagvaelger :api="api" :currentResolution="currentResolution"/>
+```
+
+### DataStore
+
+The DataStore component can be activated though the LayerControl or as a stand alone. The DataStore component is using the Client API to get access to the Datacatalog service. The Datastore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The Datastore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+
+Basic implementation:
+```javascript
+import { Api } from '@dmp/lagvaelger-client-api'
+import { Databutik } from '@dmp/lagvaelger-client-ui'
+import '@dmp/lagvaelger-client-ui/style.css'
+
+const api = new Api()
+api.load()
+```
+
+In the `template` add the component with a reference to the Client API, that the component should use:
+```html
+<Databutik :api="api"/>
+```
+
 
 ### LayerToggle
 
-The use of the `LayerToggle` component depend on wich framework you are using. These examples are using [Vue.js](https://vuejs.org/), but the main principals are the same ind Vanilla JavaScript, Ember, Angular and other frameworks.
+The LayerToggle component is a simple Google Maps-like baselayer control. It gives the user the ability to toggle between a list of baselayers provided by the application. The list of dataset contains two or more datasets.
 
-Create an `api` like this like described above:
+Basic implementation:
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
 import { LayerToggle } from '@dmp/lagvaelger-client-ui'
@@ -101,13 +230,13 @@ In the `template` add the component with a reference to the Client API and the l
 
 The `datasetState` is set on the API to match the datasets in the `LayerToggle`. 
 
-**Note:** If the active datasets doesn't match the list of datasets provides to the `LayerToggle`, the component is hidden. While testing, it can be a good idear to clear the local storage in the browser, or whipe it by calling the `load` method with a specific state, that matches the list of datasets provides to the `LayerToggle`.
+**Note:** If the active datasets doesn't match the list of datasets provides to the `LayerToggle`, the component is hidden. While testing, it can be a good idea to clear the local storage in the browser, or whipe it by calling the `load` method with a specific state, that matches the list of datasets provides to the `LayerToggle`.
 
 ### Attribution
 
-The `Attribution` compoent will provide a list of attributions for the current active visible datasets. The list will update automatically when the active datasets changes. Doublicates are removed. 
+The `Attribution` component will provide a list of attributions for the current active visible datasets. The list will update automatically when the active datasets changes. Duplicates are removed. 
 
-Just like for the `LayerToggle` compoent, you can create an `api` like this like described above (or resuse the one that is already created):
+Just like for the `LayerToggle` component, you can create an `api` like this like described above (or reuse the one that is already created):
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
 import { Attribution } from '@dmp/lagvaelger-client-ui'
@@ -121,6 +250,7 @@ In the `template` add the component with a reference to the Client API:
 ```html
 <Attribution :api="api"/>
 ```
+
 
 ## FAQ
 
