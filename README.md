@@ -11,8 +11,8 @@ DataDeling consists of four high level parts:
 
 * [Data model](doc/datamodel) - Data model
 * [Datakatalog service](doc/backend) - REST service providing an API to access a catalog of Datasets
-* [Client API](doc/frontend) - Typescript package as npm package
-* [UI components](doc/frontend) - Vue 3 reusable components as npm package
+* [Client API](doc/frontend#client-api) - Typescript package as npm package
+* [UI components](doc/frontend#ui-components) - Vue 3 reusable components as npm package
   - LayerControl (Lagvælger or LV)
   - DataStore (Databutik or DB)
   - Attribution
