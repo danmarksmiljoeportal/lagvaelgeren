@@ -10,4 +10,4 @@ A basic example request is a HTTP GET request against URL [https://datakatalog.m
 
 As detailed in the API documentation, the REST API adheres to the [JSON-API standard](https://jsonapi.org/). This allows the payload to be parsed by existing client implementations and offers standardised means to fetch hierarchical structures and filtering. JSON-API is however just a REST API that adheres to a spec so it's relatively straight forward to consume and parse without any external dependencies.
 
-To fully understand the endpoints and schemas that the REST API is exposing it can be beneficial to know more details about the data model than the API documentation supplies. The data model is fully [documented here][../datamodel].
+To fully understand the endpoints and schemas that the REST API is exposing it can be beneficial to know more details about the data model than the API documentation supplies. The data model is fully [documented here](../datamodel).
