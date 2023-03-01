@@ -10,9 +10,9 @@ Primary keys are named Id and of UUID type unless otherwise stated.
 
 For strings we always require min 2 chars. For max length we have three categories:
 
-name - max 256
-shortdesc - max 1024
-desc - max 4096
+* name - max 256
+* shortdesc - max 1024
+* desc - max 4096
 
 We also have url as type to constrain content to valid URL.
 
@@ -53,6 +53,8 @@ Can be related to datasets as publisher or owners. Publisher is the organisation
 
 ### ProductionSystem
 
+DMP interal system name.
+
 #### Attributes
 
 | Name        | Type | Nullable | Business rules |
@@ -70,6 +72,8 @@ Can be related to datasets as publisher or owners. Publisher is the organisation
 | Url  | url  | Yes      |                |
 
 ### DataLiabilityAgreement
+
+DMP interal document.
 
 #### Attributes
 
@@ -111,6 +115,8 @@ Simple free text string tags.
 
 ### FileSource
 
+General purpose file based data source metadata.
+
 #### Attributes
 
 | Name             | Type | Nullable | Business rules |
@@ -129,6 +135,8 @@ Simple free text string tags.
 
 ### ApiSource
 
+Non spatial general purpose API data source metadata.
+
 #### Attributes
 
 | Name             | Type | Nullable | Business rules |
@@ -145,8 +153,9 @@ Spatial reference is assumed to be EPSG:25832.
 
 ### (Wms/Wfs/Wmts)Source
 
+Spatial data source/service metadata.
+
 #### Attributes
-NOTE: Some attributes are only relevant for some of the source types in this section name.
 
 | Name             | Type  | Nullable | Business rules                                                                           |
 |------------------|-------|----------|------------------------------------------------------------------------------------------|
@@ -165,7 +174,11 @@ NOTE: Some attributes are only relevant for some of the source types in this sec
 | MinResolution    | float | Yes      |                                                                                          |
 | MaxResolution    | float | Yes      |                                                                                          |
 
+NOTE: Some attributes are only relevant for some of the source types in this section name.
+
 ### Image
+
+User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
 
 #### Attributes
 
@@ -173,9 +186,9 @@ NOTE: Some attributes are only relevant for some of the source types in this sec
 |------|------|----------|----------------|
 | Url  | url  | No       |                |
 
-User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
-
 ### Attribute
+
+Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
 
 #### Attributes
 
@@ -184,6 +197,4 @@ User provided images. Intended for use as thumbnail for Dataset and DatasetColle
 | Name  | name      | No       |                |
 | Title | shortdesc | No       |                |
 | Order | int       | No       |                |
-
-Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
 
