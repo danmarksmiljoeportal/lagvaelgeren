@@ -13,4 +13,4 @@ additional requests the include parameter (part of JSON-API) can be used. For ex
 
 Note that [WMS](https://www.ogc.org/standard/wms/), [WMTS](https://www.ogc.org/standard/wmts/) and [WFS](https://www.ogc.org/standard/wfs/) are protocols that most mapping software can consume. These are open specifications extensively documented at [OGC](https://www.ogc.org).
 
-To fully understand the endpoints and schemas that the REST API is exposing we recommended to study the data model that is the API is based on. The data model is documented [here](../datamodel).
+To fully understand the endpoints and schemas that the REST API is exposing we recommend to study the data model that is the API is based on. The data model is documented [here](../datamodel).
