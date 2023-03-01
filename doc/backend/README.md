@@ -18,6 +18,6 @@ The Datakatalog service REST API is formally described and documented [here](htt
 
 ### Examples
 
-A basic example request is a HTTP GET request against URL [https://datakatalog.miljoeportal.dk/api/datasets](https://datakatalog.miljoeportal.dk/api/datasets?include=wmsSource) which will give you all Datasets with all attributes but without any related information.
+A basic example request is a HTTP GET request against URL [https://datakatalog.miljoeportal.dk/api/datasets](https://datakatalog.miljoeportal.dk/api/datasets) which will give you all Datasets with all attributes but without any related information.
 
 To get related information without additional requests the include parameter (part of JSON-API) can be used. For example, [https://datakatalog.miljoeportal.dk/api/datasets?include=wmsSource](https://datakatalog.miljoeportal.dk/api/datasets?include=wmsSource) will provide the same Datasets as the previous example but including the related WmsSource that describes a WMS service which can the be used by the consumer to request actual data as map images.
