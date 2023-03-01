@@ -95,7 +95,7 @@ Represents a named collection of Datasets.
 
 ### Category
 
-Simple free text string category.
+Simple free text string category relating to a set of Datasets.
 
 #### Attributes
 
