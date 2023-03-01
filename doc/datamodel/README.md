@@ -1,6 +1,6 @@
 # Data model
 
-## Mermaid diagram
+## Diagram
 
 [![](https://mermaid.ink/svg/pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA?type=svg)](https://mermaid.live/view#pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA)
 
@@ -22,13 +22,11 @@ We also have url as type to constrain content to valid URL.
 
 All entities have Updated and Created attributes intended to be automatically maintained by persistence layer.
 
-## Non-spatial metadata entities
+## Entities
 
 ### Dataset
 
 A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata.
-
-#### Attributes
 
 | Name           | Type      | Nullable | Business rules                                                                                               |
 |----------------|-----------|----------|--------------------------------------------------------------------------------------------------------------|
@@ -45,8 +43,6 @@ A Dataset represents almost any kind of data. Can be related to other Datasets a
 
 Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data.
 
-#### Attributes
-
 | Name         | Type      | Nullable | Business rules |
 |--------------|-----------|----------|----------------|
 | Title        | shortdesc | No       |                |
@@ -59,16 +55,12 @@ Can be related to datasets as publisher or owners. Publisher is the organisation
 
 DMP interal system name.
 
-#### Attributes
-
 | Name        | Type | Nullable | Business rules |
 |-------------|------|----------|----------------|
 | Name        | name | No       |                |
 | Description | desc | Yes      |                |
 
 ### License
-
-#### Attributes
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
@@ -79,8 +71,6 @@ DMP interal system name.
 
 DMP interal document.
 
-#### Attributes
-
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
 | Name | name | No       |                |
@@ -89,8 +79,6 @@ DMP interal document.
 ### DatasetCollection
 
 Represents a named collection of Datasets.
-
-#### Attributes
 
 | Name        | Type      | Nullable | Business rules |
 |-------------|-----------|----------|----------------|
@@ -101,8 +89,6 @@ Represents a named collection of Datasets.
 
 Simple free text string category relating to a set of Datasets.
 
-#### Attributes
-
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
 | Name | name | No       |                |
@@ -110,8 +96,6 @@ Simple free text string category relating to a set of Datasets.
 ### Tag
 
 Simple free text string tags.
-
-#### Attributes
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
@@ -121,8 +105,6 @@ Simple free text string tags.
 
 General purpose file based data source metadata.
 
-#### Attributes
-
 | Name             | Type | Nullable | Business rules |
 |------------------|------|----------|----------------|
 | Url              | url  | No       |                |
@@ -130,8 +112,6 @@ General purpose file based data source metadata.
 | Description      | desc | Yes      |                |
 
 ### FileSourceType
-
-#### Attributes
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
@@ -141,25 +121,23 @@ General purpose file based data source metadata.
 
 Non spatial general purpose API data source metadata.
 
-#### Attributes
-
 | Name             | Type | Nullable | Business rules |
 |------------------|------|----------|----------------|
 | Url              | url  | No       |                |
 | DocumentationUrl | url  | Yes      |                |
 | Description      | desc | Yes      |                |
 
-## Spatial metadata entites
+### Image
 
-Only relevant for Datasets that have sources of spatial type.
+User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
 
-Spatial reference is assumed to be EPSG:25832.
+| Name | Type | Nullable | Business rules |
+|------|------|----------|----------------|
+| Url  | url  | No       |                |
 
 ### (Wms/Wfs/Wmts)Source
 
 Spatial data source/service metadata.
-
-#### Attributes
 
 | Name             | Type  | Nullable | Business rules                                                                           |
 |------------------|-------|----------|------------------------------------------------------------------------------------------|
@@ -180,21 +158,9 @@ Spatial data source/service metadata.
 
 NOTE: Some attributes are only relevant for some of the source types in this section name.
 
-### Image
-
-User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
-
-#### Attributes
-
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Url  | url  | No       |                |
-
 ### Attribute
 
 Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
-
-#### Attributes
 
 | Name  | Type      | Nullable | Business rules |
 |-------|-----------|----------|----------------|
