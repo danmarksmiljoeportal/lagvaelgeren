@@ -5,7 +5,7 @@
 
 # Introduction
 
-Welcome to DataDeling - A complete solution to catalogue Datasets and UI components to display and interact with them in a web client environment.
+Welcome to DataDeling - A complete solution to catalogue Datasets and UI components to display and interact with them in a web client environment. The dataset can be both spatial and non spatial.
 
 DataDeling consists of three system components:
 
@@ -23,4 +23,4 @@ The underlying data model used in DataDelning is formally documented [here](doc/
 
 ## FAQ
 
-- Only EPSG:25832 is used. Other projections aren't supported.
+- For spatial datasets EPSG:25832 is assumed. Other projections aren't supported at this time.
