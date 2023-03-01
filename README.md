@@ -5,7 +5,7 @@
 
 # Introduction
 
-Welcome to DataDeling - A complete solution to catalogue Datasets and UI components to display and interact with them in a web client environment. The dataset can be both spatial and non spatial.
+Welcome to DataDeling - A complete solution to catalogue metadata about Datasets and UI components to display and interact with them in a web client environment. The dataset can be both spatial and non spatial.
 
 DataDeling consists of three system components:
 
