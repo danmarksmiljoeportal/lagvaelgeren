@@ -4,7 +4,7 @@ The datakatalog service is a REST API service containing a catalouge of Dataset 
 
 ## Getting Started
 
-The Datakatalog service REST API is formally described and documented [here](https://datakatalog.miljoeportal.dk/api/swagger).
+The Datakatalog service REST API is formally described and documented [here](https://datakatalog.udv.miljoeportal.dk/api/swagger).
 
 As detailed in the API documentation, the REST API adheres to the [JSON-API standard](https://jsonapi.org/). This allows the payload to be parsed by existing client implementations and offers standardised means to fetch hierarchical structures and filtering included or out of band. However, note that JSON-API is made to be conformant to general REST API principles so it's relatively straight forward to consume and parse without any external dependencies. We recommend to use or be inspired by [existing implementations](https://jsonapi.org/implementations/).
 
