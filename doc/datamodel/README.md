@@ -10,9 +10,9 @@ Primary keys are named Id and of UUID type unless otherwise stated.
 
 For strings we always require min 2 chars. For max length we have three categories:
 
-* name - max 256
-* shortdesc - max 1024
-* desc - max 4096
+- name - max 256
+- shortdesc - max 1024
+- desc - max 4096
 
 We also have url as type to constrain content to valid URL.
 
@@ -25,7 +25,7 @@ All entities have Updated and Created attributes intended to be automatically ma
 A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata.
 
 | Name           | Type      | Nullable | Comment                                                                                                      |
-|----------------|-----------|----------|--------------------------------------------------------------------------------------------------------------|
+| -------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------ |
 | Id             | name      | No       | URN. urn:dmp:ds:name_of_dataset name can only me lower-case letters, digits and '-'. Maximum 128 characters. |
 | Uid            | guid      | No       | Primary key                                                                                                  |
 | Title          | shortdesc | No       | Short title                                                                                                  |
@@ -33,135 +33,108 @@ A Dataset represents almost any kind of data. Can be related to other Datasets a
 | SupportContact | name      | Yes      | Email adress or alternative                                                                                  |
 | Metadata       | url       | Yes      | Link to external metadata                                                                                    |
 | Draft          | bit       | no       | True if draft and not public                                                                                 |
-| DCATSync       | bit       | no       | True, to enable sync to digst through DCAT-AP-DK
+| DCATSync       | bit       | no       | True, to enable sync to digst through DCAT-AP-DK                                                             |
 
 ### Organisation
 
 Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data.
 
-| Name         | Type      | Nullable | Business rules                                    
-|--------------|-----------|----------|---------------------------------------------------
-| Title        | shortdesc | No       | Short title (unique)                              
-| Abbreviation | name      | No       | Organization abbreviation (unique)                
-| Attribution  | name      | No       | Attribution name (usually abbreviation)           
-| Url          | url       | Yes      | Link to homepage                                  
-| Description  | desc      | Yes      | Long free text                                    
+| Name         | Type      | Nullable | Comment                                 |
+| ------------ | --------- | -------- | --------------------------------------- |
+| Title        | shortdesc | No       | Short title (unique)                    |
+| Abbreviation | name      | No       | Organization abbreviation (unique)      |
+| Attribution  | name      | No       | Attribution name (usually abbreviation) |
+| Url          | url       | Yes      | Link to homepage                        |
+| Description  | desc      | Yes      | Long free text                          |
 
 ### ProductionSystem
 
 DMP interal system name.
 
-| Name        | Type | Nullable | Business rules        |
-|-------------|------|----------|-----------------------|
-| Name        | name | No       | Short name (unique)   |
-| Description | desc | Yes      | Long free text        |
+| Name        | Type | Nullable | Comment             |
+| ----------- | ---- | -------- | ------------------- |
+| Name        | name | No       | Short name (unique) |
+| Description | desc | Yes      | Long free text      |
 
 ### License
 
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Name | name | No       | Short license name (unique)               |
-| Url  | url  | Yes      | Link to license               |
+| Name | Type | Nullable | Comment                     |
+| ---- | ---- | -------- | --------------------------- |
+| Name | name | No       | Short license name (unique) |
+| Url  | url  | Yes      | Link to license             |
 
 ### DataLiabilityAgreement
 
 DMP interal document.
 
-| Name        | Type | Nullable | Business rules |
-|-------------|------|----------|----------------|
-| Name        | name | No       | Short name (unique)               |
-| Description | desc | No       | Short name (unique)               |
-| Url         | url  | Yes      | Link to document               |
+| Name        | Type | Nullable | Comment             |
+| ----------- | ---- | -------- | ------------------- |
+| Name        | name | No       | Short name (unique) |
+| Description | desc | No       | Short name (unique) |
+| Url         | url  | Yes      | Link to document    |
 
 ### DatasetCollection
 
 Represents a named collection of Datasets.
 
-| Name        | Type      | Nullable | Business rules |
-|-------------|-----------|----------|----------------|
-| Title       | shortdesc | No       | Short title (unique)               |
-| Description | desc      | Yes      | Long free text |
+| Name        | Type      | Nullable | Comment              |
+| ----------- | --------- | -------- | -------------------- |
+| Title       | shortdesc | No       | Short title (unique) |
+| Description | desc      | Yes      | Long free text       |
 
 ### Category
 
 Simple free text string category relating to a set of Datasets.
 
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Name | name | No       | Short text (unique)               |
+| Name | Type | Nullable | Comment             |
+| ---- | ---- | -------- | ------------------- |
+| Name | name | No       | Short text (unique) |
 
 ### Tag
 
 Simple free text string tags.
 
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Name | name | No       | Short text (unique)               |
-
-### FileSource
-
-General purpose file based data source metadata.
-
-| Name             | Type | Nullable | Business rules |
-|------------------|------|----------|----------------|
-| Url              | url  | No       |                |
-| DocumentationUrl | url  | Yes      |                |
-| Description      | desc | Yes      |                |
-
-### FileSourceType
-
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Name | name | No       |                |
-
-### ApiSource
-
-Non spatial general purpose API data source metadata.
-
-| Name             | Type | Nullable | Business rules |
-|------------------|------|----------|----------------|
-| Url              | url  | No       |                |
-| DocumentationUrl | url  | Yes      |                |
-| Description      | desc | Yes      |                |
+| Name | Type | Nullable | Comment             |
+| ---- | ---- | -------- | ------------------- |
+| Name | name | No       | Short text (unique) |
 
 ### Image
 
 User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
 
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Url  | url  | No       | Link to bitmap image               |
+| Name | Type | Nullable | Comment              |
+| ---- | ---- | -------- | -------------------- |
+| Url  | url  | No       | Link to bitmap image |
 
-### (Wms/Wfs/Wmts)Source
+### (File/Api/Wms/Wfs/Wmts)Source
 
-Spatial data source/service metadata.
+Dataset source/service metadata.
 
-| Name             | Type  | Nullable | Business rules                                                                           |
-|------------------|-------|----------|------------------------------------------------------------------------------------------|
-| Url              | url   | No       |                                                                                          |
-| DocumentationUrl | url   | Yes      |                                                                                          |
-| Description      | desc  | Yes      |                                                                                          |
-| TypeName         | name  | No       |                                                                                          |
-| Layer            | name  | No       |                                                                                          |
-| Style            | name  | No       |                                                                                          |
+NOTE: Some attributes are only relevant for some of the source types in this section name.
+
+| Name             | Type  | Nullable | Comment                                                                                  |
+| ---------------- | ----- | -------- | ---------------------------------------------------------------------------------------- |
+| Url              | url   | No       | URL endpoint                                                                             |
+| DocumentationUrl | url   | Yes      | URL documentation endpoint                                                               |
+| Description      | desc  | Yes      | Long free text abstract (optional)                                                       |
+| TypeName         | name  | No       | WFS TypeName                                                                             |
+| Layer            | name  | No       | WMS/WMTS layer name                                                                      |
+| Style            | name  | No       | WMS style name (optional)                                                                |
 | Extent           | name  | No       | Comma separated float values xmin,ymin,xmax,ymax to determine tilegrid origin and extent |
 | MatrixSet        | name  | No       | Reference to the name of WMTS MatrixSet tilegrid                                         |
 | MatrixIds        | name  | No       | Comma separated strings of identifiers in WMTS TileMatrixSet                             |
 | Resolutions      | name  | No       | Comma separated float values in m/pixel corresponding to the zoom levels in a tilegrid   |
-| Version          | name  | No       |                                                                                          |
-| Format           | name  | No       |                                                                                          |
-| MinResolution    | float | Yes      |                                                                                          |
-| MaxResolution    | float | Yes      |                                                                                          |
-
-NOTE: Some attributes are only relevant for some of the source types in this section name.
+| Version          | name  | No       | Preferred WMS version (default 1.3.0)                                                    |
+| Format           | name  | No       | Preferred WMS image format mimetype (default image/png)                                  |
+| MinResolution    | float | Yes      | Maximum resolution m/pixel (optional)                                                    |
+| MaxResolution    | float | Yes      | Minimum resolution m/pixel (optional)                                                    |
 
 ### Attribute
 
 Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
 
-| Name  | Type      | Nullable | Business rules |
-|-------|-----------|----------|----------------|
-| Name  | name      | No       |                |
-| Title | shortdesc | No       |                |
-| Order | int       | No       |                |
-
+| Name  | Type      | Nullable | Comment                               |
+| ----- | --------- | -------- | ------------------------------------- |
+| Name  | name      | No       | Column/property name in source        |
+| Title | shortdesc | No       | Short title                           |
+| Order | int       | No       | Presentation order (required, unique) |
