@@ -24,53 +24,54 @@ All entities have Updated and Created attributes intended to be automatically ma
 
 A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata.
 
-| Name           | Type      | Nullable | Business rules                                                                                               |
+| Name           | Type      | Nullable | Comment                                                                                                      |
 |----------------|-----------|----------|--------------------------------------------------------------------------------------------------------------|
 | Id             | name      | No       | URN. urn:dmp:ds:name_of_dataset name can only me lower-case letters, digits and '-'. Maximum 128 characters. |
-| Uid            | guid      | No       |                                                                                                              |
-| Title          | shortdesc | No       |                                                                                                              |
-| Description    | desc      | Yes      |                                                                                                              |
-| SupportContact | name      | Yes      | Valid email                                                                                                  |
-| Metadata       | url       | Yes      |                                                                                                              |
-| Draft          | bit       | no       |                                                                                                              |
-| DCATSync       | bit       | no       |
+| Uid            | guid      | No       | Primary key                                                                                                  |
+| Title          | shortdesc | No       | Short title                                                                                                  |
+| Description    | desc      | Yes      | Long free text                                                                                               |
+| SupportContact | name      | Yes      | Email adress or alternative                                                                                  |
+| Metadata       | url       | Yes      | Link to external metadata                                                                                    |
+| Draft          | bit       | no       | True if draft and not public                                                                                 |
+| DCATSync       | bit       | no       | True, to enable sync to digst through DCAT-AP-DK
 
 ### Organisation
 
 Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data.
 
-| Name         | Type      | Nullable | Business rules |
-|--------------|-----------|----------|----------------|
-| Title        | shortdesc | No       |                |
-| Abbreviation | name      | No       |                |
-| Attribution  | name      | No       |                |
-| Url          | url       | Yes      |                |
-| Description  | desc      | Yes      |                |
+| Name         | Type      | Nullable | Business rules                                    
+|--------------|-----------|----------|---------------------------------------------------
+| Title        | shortdesc | No       | Short title (unique)                              
+| Abbreviation | name      | No       | Organization abbreviation (unique)                
+| Attribution  | name      | No       | Attribution name (usually abbreviation)           
+| Url          | url       | Yes      | Link to homepage                                  
+| Description  | desc      | Yes      | Long free text                                    
 
 ### ProductionSystem
 
 DMP interal system name.
 
-| Name        | Type | Nullable | Business rules |
-|-------------|------|----------|----------------|
-| Name        | name | No       |                |
-| Description | desc | Yes      |                |
+| Name        | Type | Nullable | Business rules        |
+|-------------|------|----------|-----------------------|
+| Name        | name | No       | Short name (unique)   |
+| Description | desc | Yes      | Long free text        |
 
 ### License
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
-| Name | name | No       |                |
-| Url  | url  | Yes      |                |
+| Name | name | No       | Short license name (unique)               |
+| Url  | url  | Yes      | Link to license               |
 
 ### DataLiabilityAgreement
 
 DMP interal document.
 
-| Name | Type | Nullable | Business rules |
-|------|------|----------|----------------|
-| Name | name | No       |                |
-| Url  | url  | Yes      |                |
+| Name        | Type | Nullable | Business rules |
+|-------------|------|----------|----------------|
+| Name        | name | No       | Short name (unique)               |
+| Description | desc | No       | Short name (unique)               |
+| Url         | url  | Yes      | Link to document               |
 
 ### DatasetCollection
 
@@ -78,8 +79,8 @@ Represents a named collection of Datasets.
 
 | Name        | Type      | Nullable | Business rules |
 |-------------|-----------|----------|----------------|
-| Title       | shortdesc | No       |                |
-| Description | desc      | Yes      |                |
+| Title       | shortdesc | No       | Short title (unique)               |
+| Description | desc      | Yes      | Long free text |
 
 ### Category
 
@@ -87,7 +88,7 @@ Simple free text string category relating to a set of Datasets.
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
-| Name | name | No       |                |
+| Name | name | No       | Short text (unique)               |
 
 ### Tag
 
@@ -95,7 +96,7 @@ Simple free text string tags.
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
-| Name | name | No       |                |
+| Name | name | No       | Short text (unique)               |
 
 ### FileSource
 
@@ -129,7 +130,7 @@ User provided images. Intended for use as thumbnail for Dataset and DatasetColle
 
 | Name | Type | Nullable | Business rules |
 |------|------|----------|----------------|
-| Url  | url  | No       |                |
+| Url  | url  | No       | Link to bitmap image               |
 
 ### (Wms/Wfs/Wmts)Source
 
