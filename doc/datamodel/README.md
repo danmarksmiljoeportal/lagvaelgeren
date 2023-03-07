@@ -4,107 +4,46 @@
 
 [![](https://mermaid.ink/svg/pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA?type=svg)](https://mermaid.live/view#pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA)
 
-## Common rules / types
-
-Primary keys are named Id and of UUID type unless otherwise stated.
-
-For strings we always require min 2 chars. For max length we have three categories:
-
-- name - max 256
-- shortdesc - max 1024
-- desc - max 4096
-
-We also have url as type to constrain content to valid URL.
-
-All entities have Updated and Created attributes intended to be automatically maintained by persistence layer.
+This is a high-level description of the concepts in the datamodel. If you are looking for a more in-depth and low-level description we provide a description in Swagger: [here](https://datakatalog.udv.miljoeportal.dk/api/swagger).
 
 ## Entities
 
 ### Dataset
 
-A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata.
+A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata. Primarily the databaes contains data related to environment and is spatial data. The dataset entity contains Title, description attributes. 
 
-| Name           | Type      | Nullable | Comment                                                                                                      |
-| -------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| Id             | name      | No       | URN. urn:dmp:ds:name_of_dataset name can only me lower-case letters, digits and '-'. Maximum 128 characters. |
-| Uid            | guid      | No       | Primary key                                                                                                  |
-| Title          | shortdesc | No       | Short title                                                                                                  |
-| Description    | desc      | Yes      | Long free text                                                                                               |
-| SupportContact | name      | Yes      | Email adress or alternative                                                                                  |
-| Metadata       | url       | Yes      | Link to external metadata                                                                                    |
-| Draft          | bit       | no       | True if draft and not public                                                                                 |
-| DCATSync       | bit       | no       | True, to enable sync to digst through DCAT-AP-DK                                                             |
 
 ### Organisation
 
-Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data.
-
-| Name         | Type      | Nullable | Comment                                 |
-| ------------ | --------- | -------- | --------------------------------------- |
-| Title        | shortdesc | No       | Short title (unique)                    |
-| Abbreviation | name      | No       | Organization abbreviation (unique)      |
-| Attribution  | name      | No       | Attribution name (usually abbreviation) |
-| Url          | url       | Yes      | Link to homepage                        |
-| Description  | desc      | Yes      | Long free text                          |
+Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data. The organisation entity contains Title, Abbreviation and Description attributes.
 
 ### ProductionSystem
 
-DMP interal system name.
-
-| Name        | Type | Nullable | Comment             |
-| ----------- | ---- | -------- | ------------------- |
-| Name        | name | No       | Short name (unique) |
-| Description | desc | Yes      | Long free text      |
+DMP interal system name. The entity contains name and description.
 
 ### License
 
-| Name | Type | Nullable | Comment                     |
-| ---- | ---- | -------- | --------------------------- |
-| Name | name | No       | Short license name (unique) |
-| Url  | url  | Yes      | Link to license             |
+License contains information about the the dataset in question is licensed by the owners of the dataset, the entity contains a name and a link to the license.
 
 ### DataLiabilityAgreement
 
 DMP interal document.
 
-| Name        | Type | Nullable | Comment             |
-| ----------- | ---- | -------- | ------------------- |
-| Name        | name | No       | Short name (unique) |
-| Description | desc | No       | Short name (unique) |
-| Url         | url  | Yes      | Link to document    |
-
 ### DatasetCollection
 
-Represents a named collection of Datasets.
-
-| Name        | Type      | Nullable | Comment              |
-| ----------- | --------- | -------- | -------------------- |
-| Title       | shortdesc | No       | Short title (unique) |
-| Description | desc      | Yes      | Long free text       |
+Represents a named collection of Datasets. A collection of datasets are datasets that are somehow related or datasets that should be seen together. There is a many-to-many relationship with the Datasets entity. The DatasetCollection contains Title and Description of the collection. 
 
 ### Category
 
 Simple free text string category relating to a set of Datasets.
 
-| Name | Type | Nullable | Comment             |
-| ---- | ---- | -------- | ------------------- |
-| Name | name | No       | Short text (unique) |
-
 ### Tag
 
 Simple free text string tags.
 
-| Name | Type | Nullable | Comment             |
-| ---- | ---- | -------- | ------------------- |
-| Name | name | No       | Short text (unique) |
-
 ### Image
 
-User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
-
-| Name | Type | Nullable | Comment              |
-| ---- | ---- | -------- | -------------------- |
-| Url  | url  | No       | Link to bitmap image |
+User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends. There is a link to the Bitmap image. 
 
 ### (File/Api/Wms/Wfs/Wmts)Source
 
@@ -131,10 +70,19 @@ NOTE: Some attributes are only relevant for some of the source types in this sec
 
 ### Attribute
 
-Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
+The attribute entity is used in the attribution component and is a short description of which organisation is attributed the dataset, often it is the owner of the dataset. Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
 
-| Name  | Type      | Nullable | Comment                               |
-| ----- | --------- | -------- | ------------------------------------- |
-| Name  | name      | No       | Column/property name in source        |
-| Title | shortdesc | No       | Short title                           |
-| Order | int       | No       | Presentation order (required, unique) |
+## Common rules / types
+
+Primary keys are named Id and of UUID type unless otherwise stated.
+
+For strings we always require min 2 chars. For max length we have three categories:
+
+- name - max 256
+- shortdesc - max 1024
+- desc - max 4096
+
+We also have url as type to constrain content to valid URL.
+
+All entities have Updated and Created attributes intended to be automatically maintained by persistence layer.
+
