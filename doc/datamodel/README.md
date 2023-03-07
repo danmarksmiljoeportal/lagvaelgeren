@@ -8,89 +8,40 @@
 
 ### Dataset
 
-A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata. Primarily the databaes contains spatial data related to environment and is spatial data.
+A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata. Primarily the databaes contains data related to environment and is spatial data. The dataset entity contains Title, description attributes. 
 
-| Name           | Type      | Nullable | Comment                                                                                                      |
-| -------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| Id             | name      | No       | URN. urn:dmp:ds:name_of_dataset name can only me lower-case letters, digits and '-'. Maximum 128 characters. |
-| Uid            | guid      | No       | Primary key                                                                                                  |
-| Title          | shortdesc | No       | Short title                                                                                                  |
-| Description    | desc      | Yes      | Long free text                                                                                               |
-| SupportContact | name      | Yes      | Email adress or alternative                                                                                  |
-| Metadata       | url       | Yes      | Link to external metadata                                                                                    |
-| Draft          | bit       | no       | True if draft and not public                                                                                 |
-| DCATSync       | bit       | no       | True, to enable sync to Digitaliseringsstyrelsen through DCAT-AP-DK                                                             |
 
 ### Organisation
 
-Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data.
-
-| Name         | Type      | Nullable | Comment                                 |
-| ------------ | --------- | -------- | --------------------------------------- |
-| Title        | shortdesc | No       | Short title (unique)                    |
-| Abbreviation | name      | No       | Organization abbreviation (unique)      |
-| Attribution  | name      | No       | Attribution name (usually abbreviation) |
-| Url          | url       | Yes      | Link to homepage                        |
-| Description  | desc      | Yes      | Long free text                          |
+Can be related to datasets as publisher or owners. Publisher is the organisation who houses the data, owners are the organisations that have copyright on the data. The organisation entity contains Title, Abbreviation and Description attributes.
 
 ### ProductionSystem
 
-DMP interal system name.
-
-| Name        | Type | Nullable | Comment             |
-| ----------- | ---- | -------- | ------------------- |
-| Name        | name | No       | Short name (unique) |
-| Description | desc | Yes      | Long free text      |
+DMP interal system name. The entity contains name and description.
 
 ### License
 
-| Name | Type | Nullable | Comment                     |
-| ---- | ---- | -------- | --------------------------- |
-| Name | name | No       | Short license name (unique) |
-| Url  | url  | Yes      | Link to license             |
+License contains information about the the dataset in question is licensed by the owners of the dataset, the entity contains a name and a link to the license.
 
 ### DataLiabilityAgreement
 
 DMP interal document.
 
-| Name        | Type | Nullable | Comment             |
-| ----------- | ---- | -------- | ------------------- |
-| Name        | name | No       | Short name (unique) |
-| Description | desc | No       | Short name (unique) |
-| Url         | url  | Yes      | Link to document    |
-
 ### DatasetCollection
 
-Represents a named collection of Datasets. A collection of datasets are datasets that are somehow related or datasets that should be seen together.
-
-| Name        | Type      | Nullable | Comment              |
-| ----------- | --------- | -------- | -------------------- |
-| Title       | shortdesc | No       | Short title (unique) |
-| Description | desc      | Yes      | Long free text       |
+Represents a named collection of Datasets. A collection of datasets are datasets that are somehow related or datasets that should be seen together. There is a many-to-many relationship with the Datasets entity. The DatasetCollection contains Title and Description of the collection. 
 
 ### Category
 
 Simple free text string category relating to a set of Datasets.
 
-| Name | Type | Nullable | Comment             |
-| ---- | ---- | -------- | ------------------- |
-| Name | name | No       | Short text (unique) |
-
 ### Tag
 
 Simple free text string tags.
 
-| Name | Type | Nullable | Comment             |
-| ---- | ---- | -------- | ------------------- |
-| Name | name | No       | Short text (unique) |
-
 ### Image
 
-User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends.
-
-| Name | Type | Nullable | Comment              |
-| ---- | ---- | -------- | -------------------- |
-| Url  | url  | No       | Link to bitmap image |
+User provided images. Intended for use as thumbnail for Dataset and DatasetCollection or Legends. There is a link to the Bitmap image. 
 
 ### (File/Api/Wms/Wfs/Wmts)Source
 
@@ -117,14 +68,7 @@ NOTE: Some attributes are only relevant for some of the source types in this sec
 
 ### Attribute
 
-Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
-
-| Name  | Type      | Nullable | Comment                               |
-| ----- | --------- | -------- | ------------------------------------- |
-| Name  | name      | No       | Column/property name in source        |
-| Title | shortdesc | No       | Short title                           |
-| Order | int       | No       | Presentation order (required, unique) |
-
+The attribute entity is used in the attribution component and is a short description of which organisation is attributed the dataset, often it is the owner of the dataset. Spatial sources might not have desired metadata or naming for attributes/columns to be useful in presentation. The Attribute entity is intended to be able to provide such optional source specific metadata.
 
 ## Common rules / types
 
