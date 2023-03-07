@@ -22,7 +22,7 @@ All entities have Updated and Created attributes intended to be automatically ma
 
 ### Dataset
 
-A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata.
+A Dataset represents almost any kind of data. Can be related to other Datasets as a form of metadata. Primarily the databaes contains spatial data related to environment and is spatial data.
 
 | Name           | Type      | Nullable | Comment                                                                                                      |
 | -------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------ |
@@ -33,7 +33,7 @@ A Dataset represents almost any kind of data. Can be related to other Datasets a
 | SupportContact | name      | Yes      | Email adress or alternative                                                                                  |
 | Metadata       | url       | Yes      | Link to external metadata                                                                                    |
 | Draft          | bit       | no       | True if draft and not public                                                                                 |
-| DCATSync       | bit       | no       | True, to enable sync to digst through DCAT-AP-DK                                                             |
+| DCATSync       | bit       | no       | True, to enable sync to Digitaliseringsstyrelsen through DCAT-AP-DK                                                             |
 
 ### Organisation
 
@@ -75,7 +75,7 @@ DMP interal document.
 
 ### DatasetCollection
 
-Represents a named collection of Datasets.
+Represents a named collection of Datasets. A collection of datasets are datasets that are somehow related or datasets that should be seen together.
 
 | Name        | Type      | Nullable | Comment              |
 | ----------- | --------- | -------- | -------------------- |
