@@ -5,8 +5,7 @@
 
 # Introduction
 
-Welcome to DataDeling - A complete solution to catalogue metadata about Datasets and UI components to display and interact with them in a web client environment. The dataset can be both spatial and non spatial.
-
+Welcome to DataDeling - A complete solution to catalogue metadata about Datasets and UI components to display and interact with them in a web client environment. There are several services and components available for use, it is intended to be used to generate map based solutions. DataDeling supports all kinds of data, but most data in the datacatalog are spatial data, there are also non-spatial data available. 
 
 ![image](https://user-images.githubusercontent.com/120640911/223416553-76ab916c-3f94-4ec3-9dd4-9511b44d252b.png)
 
