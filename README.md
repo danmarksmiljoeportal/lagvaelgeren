@@ -8,7 +8,9 @@
 Welcome to DataDeling - A complete solution to catalogue metadata about Datasets and UI components to display and interact with them in a web client environment. The dataset can be both spatial and non spatial.
 The DataDeling concept is to provide a list of references to datasets that are sourced from other providers, the database basically contains lists of datasets, what they contain and where they can be found. There is no data in the DataDeling database and API other than metadata about the datasets. Using the API and components described below you can integrate the components and create your own map with the datasources that you choose. 
 
-![image](https://user-images.githubusercontent.com/120640911/223371819-95822881-dddd-40dd-9e3b-1242a317c7f9.png)
+
+![image](https://user-images.githubusercontent.com/120640911/223374756-23d63497-6776-4b8c-b091-5b6f60dc8bff.png)
+
 
 DataDeling consists of three system components:
 
