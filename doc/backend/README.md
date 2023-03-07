@@ -2,6 +2,9 @@
 
 The datakatalog service is a REST API service containing a catalouge of Dataset metadata including technical details about Dataset sources, for example WMS services, so that they can be consumed in a mapping solution.
 
+![image](https://user-images.githubusercontent.com/120640911/223368610-aa856785-1699-4a62-b614-7d7cc473c3d1.png)
+
+
 To fully understand the endpoints and schemas that the REST API is exposing we recommend to study the data model that is the API is based on. The data model is documented [here](../datamodel).
 
 Data source protocols [WMS](https://www.ogc.org/standard/wms/), [WMTS](https://www.ogc.org/standard/wmts/) and [WFS](https://www.ogc.org/standard/wfs/) are industry standards that most mapping software can consume and open specifications extensively documented at [OGC](https://www.ogc.org).
