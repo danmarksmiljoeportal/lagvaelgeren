@@ -16,13 +16,13 @@ The DataDeling concept is to provide a list of references to datasets that are s
 
 DataDeling consists of three system components:
 
-1. [UI components](doc/frontend#ui-components) - Vue 3 reusable components as npm package which use the API package
+1. [UI components](doc/frontend#ui-components) - The UI components consists of multiple components, that can be used to create custom solutions using pre-built components from datadeling.
    * LayerControl, this controls which layers are shown on the map (Lagvælger or LV)
    * DataStore, the datastore is an overview of all the datasets that can be added to the map (Databutik or DB)
    * Attribution, this tells the user what the source of the layer is
    * LayerToggle, this enables you to turn the layers on or off.
-2. [Client API](doc/frontend#client-api) - TypeScript API npm package offering a high level API to access the Datakatalog service
-3. [Datakatalog service](doc/backend) - REST API service providing access to a catalog of Datasets
+2. [Client API](doc/frontend#client-api) - The client API models the data in the catalog service and handles all requests for the service. If you want to build you own custom frontend. 
+3. [Datakatalog service](doc/backend) - REST API service providing direct access to a catalog of Datasets.
 
 It's possible to integrate using only the Datakatalog service but it requires more knowledge of the data model and use cases. The UI components are high level and can easily be integrated in web based solutions.
 
