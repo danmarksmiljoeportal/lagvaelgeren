@@ -1,6 +1,6 @@
 # Datakatalog service
 
-The datakatalog service is a REST API service containing a catalouge of Dataset metadata including technical details about Dataset sources, for example WMS services, so that they can be consumed in a mapping solution.
+The datakatalog service is a REST API service containing a catalog of Dataset metadata including technical details about Dataset sources, for example WMS services, so that they can be consumed in a mapping solution.
 
 ![image](https://user-images.githubusercontent.com/120640911/223372119-706610ea-ded8-40f2-9e23-d62f5970700b.png)
 
