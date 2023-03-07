@@ -4,20 +4,6 @@
 
 [![](https://mermaid.ink/svg/pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA?type=svg)](https://mermaid.live/view#pako:eNqNk8FugzAMhl8lyrnlAbhN7XbqtEMn7cIlI4ZGCgkKiaaO8O5LApQSCitIIOzPv2MbtziXFHCKQR0ZKRWpMoHcdSAaSqmuyNokkS06Ek0a0ChFGXZ3YEZbJ5PEtuhDlUSwX6KZFIGTPwJUDFsP2yVcm2_OmssywKtLi04sB9HAwwN4TXfGT1I-di9LUMBdgXRJ7vcu11fVnKVR-Uq2ASqegSr9BPVSs_-gFr0xDhtU2392_at_zpo8AbPAg-Qc8kB0NsxxY9R38NDUec_X4Dj37e-KHV4utt0VHrumxsWeaYRD-05QgqCzoiZmEV2seqaBbgnrtfiBHs14hytQFWHUrWAwZlhfoIIMe0EKBTFce12Pmpq6xr1SpqXCaUF4AztMjJbnq8hxqpWBERqW-UZBCHrvdz2sfPcHBxdFIA)
 
-## Common rules / types
-
-Primary keys are named Id and of UUID type unless otherwise stated.
-
-For strings we always require min 2 chars. For max length we have three categories:
-
-- name - max 256
-- shortdesc - max 1024
-- desc - max 4096
-
-We also have url as type to constrain content to valid URL.
-
-All entities have Updated and Created attributes intended to be automatically maintained by persistence layer.
-
 ## Entities
 
 ### Dataset
@@ -138,3 +124,19 @@ Spatial sources might not have desired metadata or naming for attributes/columns
 | Name  | name      | No       | Column/property name in source        |
 | Title | shortdesc | No       | Short title                           |
 | Order | int       | No       | Presentation order (required, unique) |
+
+
+## Common rules / types
+
+Primary keys are named Id and of UUID type unless otherwise stated.
+
+For strings we always require min 2 chars. For max length we have three categories:
+
+- name - max 256
+- shortdesc - max 1024
+- desc - max 4096
+
+We also have url as type to constrain content to valid URL.
+
+All entities have Updated and Created attributes intended to be automatically maintained by persistence layer.
+
