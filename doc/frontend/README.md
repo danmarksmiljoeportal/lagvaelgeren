@@ -154,6 +154,8 @@ In all the components you need an instance of the Client API that can be created
 
 The layer control component is a simple, user friendly UI that gives the user the ability to control the state og each dataset. The state contains information about witch datasets is available in the UI, if the datasets are visible or not and the order of the datasets.
 
+<img width="735" alt="image" src="https://user-images.githubusercontent.com/3703683/223683566-80f5932f-fe38-4676-a168-301979a8c423.png">
+
 The content of the LayerControl can be modified by the application if needed. But it is possible to add datasets to the UI by using the DataStore component.
 
 Basic implementation:
@@ -189,7 +191,11 @@ map.on('moveend', () => currentResolution.value = map.getView().getResolution())
 
 The DataStore component can be activated though the LayerControl or as a stand alone. The DataStore component is using the Client API to get access to the Datacatalog service. The Datastore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The Datastore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
 
-Basic implementation:
+<img width="1231" alt="image" src="https://user-images.githubusercontent.com/3703683/223683813-f6030f1e-ec79-4384-94ff-d44cefcbc6b5.png">
+
+The DataStore component can be activated though the LayerControl or as a stand alone. The DataStore component is using the Client API to get access to the Datacatalog service. The Datastore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The Datastore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+
+Basic implementation (not needed if the layerControl is added!):
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
 import { Databutik } from '@dmp/lagvaelger-client-ui'
@@ -208,6 +214,8 @@ In the `template` add the component with a reference to the Client API, that the
 ### LayerToggle
 
 The LayerToggle component is a simple Google Maps-like baselayer control. It gives the user the ability to toggle between a list of baselayers provided by the application. The list of dataset contains two or more datasets.
+
+<img width="631" alt="image" src="https://user-images.githubusercontent.com/3703683/223682264-5e6cda7e-a555-43d0-87f9-343c27ba437e.png">
 
 Basic implementation:
 ```javascript
@@ -235,6 +243,8 @@ The `datasetState` is set on the API to match the datasets in the `LayerToggle`.
 ### Attribution
 
 The `Attribution` component will provide a list of attributions for the current active visible datasets. The list will update automatically when the active datasets changes. Duplicates are removed. 
+
+<img width="754" alt="image" src="https://user-images.githubusercontent.com/3703683/223683247-ed25c289-76d1-40ad-b82e-20180f9584ad.png">
 
 Just like for the `LayerToggle` component, you can create an `api` like this like described above (or reuse the one that is already created):
 ```javascript
