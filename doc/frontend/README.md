@@ -269,3 +269,5 @@ In the `template` add the component with a reference to the Client API:
 - Don't modify the `layerGroup` from the Client API programmatically.
 
 - OpenLayers 7+ is required.
+
+- If you are using Typescript, then you need to use the same Major and Minor version as the TypeScript used in the Client API package.
