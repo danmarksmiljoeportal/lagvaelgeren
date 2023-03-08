@@ -267,3 +267,5 @@ In the `template` add the component with a reference to the Client API:
 - To change the active datasets, just modify the `api.activeDatasets` property. The `layerGroup` in OpenLayers will reflect the state and the order of the `api.activeDatasets` collection.
 
 - Don't modify the `layerGroup` from the Client API programmatically.
+
+- OpenLayers 7+ is required.
