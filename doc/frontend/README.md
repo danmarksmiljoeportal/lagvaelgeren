@@ -135,6 +135,22 @@ saveToQgs({
 ```
 Read more about the option [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/functions/saveToQgs.html).
 
+### Locale
+
+By default the locale is `dk-DK` but it is possible to get the metadata and the components in `en-US` like this:
+
+```javascript
+const api = new Api({
+  locale: 'en-US',
+})
+```
+
+Furthermore you can dynamically change the locale with:
+
+```javascript
+api.setLocale('en-US')
+```
+
 ### Custom datasets
 
 TBD
