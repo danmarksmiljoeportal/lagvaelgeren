@@ -2,7 +2,7 @@
 
 ## Client API
 
-As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic that has been used to implement LayerControl and the DataStore. This package also has API documentation which can be [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/index.html). The client API models the data in the catalog service and handles all requests for the service. Furthermore it includes several helper functions that can be used creating applications. 
+As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic that has been used to implement [LayerControl](#layercontrol) and the [DatasetStore](#datasetstore). This package also has API documentation which can be [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/index.html). The client API models the data in the catalog service and handles all requests for the service. Furthermore it includes several helper functions that can be used creating applications. 
 
 ### Install
 To install the Client API use npm like this:
@@ -172,7 +172,7 @@ The layer control component is a simple, user friendly UI that gives the user th
 
 <img width="735" alt="image" src="https://user-images.githubusercontent.com/3703683/223683566-80f5932f-fe38-4676-a168-301979a8c423.png">
 
-The content of the LayerControl can be modified by the application if needed. But it is possible to add datasets to the UI by using the DataStore component.
+The content of the [LayerControl](#layercontrol) can be modified by the application if needed. But it is possible to add datasets to the UI by using the DataStore component.
 
 Basic implementation:
 ```javascript
@@ -199,7 +199,7 @@ Beside adding the `api` to the component, there are multiple options to add:
 
 ##### collapsed
 
-As default the LayerControl is expanded. But by adding the `collapsed` option, it is possible to force the LayerControl as collapsed instead:
+As default the [LayerControl](#layercontrol) is expanded. But by adding the `collapsed` option, it is possible to force the [LayerControl](#layercontrol) as collapsed instead:
 
 ```html
 <LayerControl :api="api" :collapsed="true"/>
@@ -207,13 +207,13 @@ As default the LayerControl is expanded. But by adding the `collapsed` option, i
 
 ##### disableDataStore
 
-To remove the "Add layers" button from the LayerControl, just add `disableDataStore` like this:
+To remove the "Add layers" button from the [LayerControl](#layercontrol), just add `disableDataStore` like this:
 
 ```html
 <LayerControl :api="api" :disableDataStore="true"/>
 ```
 
-This will remove the buttom as well as the "Show metadata" button and the "Remove layer" button from each dataset in the LayerControl.
+This will remove the buttom as well as the "Show metadata" button and the "Remove layer" button from each dataset in the [LayerControl](#layercontrol).
 
 ##### currentResolution
 
@@ -229,7 +229,7 @@ map.on('moveend', () => currentResolution.value = map.getView().getResolution())
 
 ##### hiddenDatasets
 
-In some cases, like when using the LayerToggle compoment, you would like to hide some specific datasets in the LayerControl and in the DatasetStore. You can do this using the `hiddenDatasets` options like this:
+In some cases, like when using the [LayerToggle](#layertoggle) compoment, you would like to hide some specific datasets in the [LayerControl](#layercontrol) and in the [DatasetStore](#datasetstore). You can do this using the `hiddenDatasets` options like this:
 
 ```javascript
 const layerToggleLayers = ['urn:dmp:ds:skaermkort-daempet', 'urn:dmp:ds:ortofoto-foraar-nyeste-tilgaengelige']
@@ -241,13 +241,13 @@ const layerToggleLayers = ['urn:dmp:ds:skaermkort-daempet', 'urn:dmp:ds:ortofoto
 
 ### DatasetStore
 
-The DatasetStore component can be activated though the LayerControl or as a stand alone. The DatasetStore component is using the Client API to get access to the Datacatalog service. The DatasetStore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The DatasetStore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+The [DatasetStore](#datasetstore) component can be activated though the [LayerControl](#layercontrol) or as a stand alone. The [DatasetStore](#datasetstore) component is using the Client API to get access to the Datacatalog service. The [DatasetStore](#datasetstore) component makes it easy to find a dataset, see the relations between datasets and add datasets to the [LayerControl](#layercontrol). The [DatasetStore](#datasetstore) component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
 
 <img width="1231" alt="image" src="https://user-images.githubusercontent.com/3703683/223683813-f6030f1e-ec79-4384-94ff-d44cefcbc6b5.png">
 
-The DatasetStore component can be activated though the LayerControl or as a stand alone. The DatasetStore component is using the Client API to get access to the Datacatalog service. The DatasetStore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The DatasetStore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+The [DatasetStore](#datasetstore) component can be activated though the [LayerControl](#layercontrol) or as a stand alone. The [DatasetStore](#datasetstore) component is using the Client API to get access to the Datacatalog service. The [DatasetStore](#datasetstore) component makes it easy to find a dataset, see the relations between datasets and add datasets to the [LayerControl](#layercontrol). The [DatasetStore](#datasetstore) component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
 
-Basic implementation (not needed if the layerControl is added!):
+Basic implementation (not needed if the [LayerControl](#layercontrol) is added!):
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
 import { DatasetStore } from '@dmp/lagvaelger-client-ui'
@@ -262,10 +262,26 @@ In the `template` add the component with a reference to the Client API, that the
 <DatasetStore :api="api"/>
 ```
 
+#### Options
+
+Beside adding the `api` to the component, there are multiple options to add:
+
+##### hiddenDatasets
+
+In some cases, like when using the [LayerToggle](#layertoggle) compoment, you would like to hide some specific datasets in the [LayerControl](#layercontrol) and in the [DatasetStore](#datasetstore). You can do this using the `hiddenDatasets` options like this:
+
+```javascript
+const layerToggleLayers = ['urn:dmp:ds:skaermkort-daempet', 'urn:dmp:ds:ortofoto-foraar-nyeste-tilgaengelige']
+```
+
+```html
+<DatasetStore :api="api" :hiddenDatasets="layerToggleLayers"/>
+```
+
 
 ### LayerToggle
 
-The LayerToggle component is a simple Google Maps-like baselayer control. It gives the user the ability to toggle between a list of baselayers provided by the application. The list of dataset contains two or more datasets.
+The [LayerToggle](#layertoggle) component is a simple Google Maps-like baselayer control. It gives the user the ability to toggle between a list of baselayers provided by the application. The list of dataset contains two or more datasets.
 
 <img width="631" alt="image" src="https://user-images.githubusercontent.com/3703683/223682264-5e6cda7e-a555-43d0-87f9-343c27ba437e.png">
 
@@ -288,9 +304,9 @@ In the `template` add the component with a reference to the Client API and the l
 <LayerToggle :api="api" :datasets="layerToggleDatasets"/>
 ```
 
-The `datasetState` is set on the API to match the datasets in the `LayerToggle`. 
+The `datasetState` is set on the API to match the datasets in the [LayerToggle](#layertoggle). 
 
-**Note:** If the active datasets doesn't match the list of datasets provides to the `LayerToggle`, the component is hidden. While testing, it can be a good idea to clear the local storage in the browser, or whipe it by calling the `load` method with a specific state, that matches the list of datasets provides to the `LayerToggle`.
+**Note:** If the active datasets doesn't match the list of datasets provides to the [LayerToggle](#layertoggle), the component is hidden. While testing, it can be a good idea to clear the local storage in the browser, or whipe it by calling the `load` method with a specific state, that matches the list of datasets provides to the [LayerToggle](#layertoggle).
 
 ### Attribution
 
@@ -298,7 +314,7 @@ The `Attribution` component will provide a list of attributions for the current 
 
 <img width="754" alt="image" src="https://user-images.githubusercontent.com/3703683/223683247-ed25c289-76d1-40ad-b82e-20180f9584ad.png">
 
-Just like for the `LayerToggle` component, you can create an `api` like this like described above (or reuse the one that is already created):
+Just like for the [LayerToggle](#layertoggle) component, you can create an `api` like this like described above (or reuse the one that is already created):
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
 import { Attribution } from '@dmp/lagvaelger-client-ui'
