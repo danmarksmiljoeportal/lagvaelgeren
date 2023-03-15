@@ -177,7 +177,7 @@ The content of the LayerControl can be modified by the application if needed. Bu
 Basic implementation:
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
-import { Lagvaelger } from '@dmp/lagvaelger-client-ui'
+import { LayerControl } from '@dmp/lagvaelger-client-ui'
 import '@dmp/lagvaelger-client-ui/style.css'
 
 const api = new Api({
@@ -188,7 +188,7 @@ api.load()
 
 In the `template` add the component with a reference to the Client API, that the component should use:
 ```html
-<Lagvaelger :api="api"/>
+<LayerControl :api="api"/>
 ```
 
 Thas is all you need.
@@ -200,21 +200,21 @@ map.on('moveend', () => currentResolution.value = map.getView().getResolution())
 ```
 
 ```html
-<Lagvaelger :api="api" :currentResolution="currentResolution"/>
+<LayerControl :api="api" :currentResolution="currentResolution"/>
 ```
 
-### DataStore
+### DatasetStore
 
-The DataStore component can be activated though the LayerControl or as a stand alone. The DataStore component is using the Client API to get access to the Datacatalog service. The Datastore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The Datastore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+The DatasetStore component can be activated though the LayerControl or as a stand alone. The DatasetStore component is using the Client API to get access to the Datacatalog service. The DatasetStore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The DatasetStore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
 
 <img width="1231" alt="image" src="https://user-images.githubusercontent.com/3703683/223683813-f6030f1e-ec79-4384-94ff-d44cefcbc6b5.png">
 
-The DataStore component can be activated though the LayerControl or as a stand alone. The DataStore component is using the Client API to get access to the Datacatalog service. The Datastore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The Datastore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
+The DatasetStore component can be activated though the LayerControl or as a stand alone. The DatasetStore component is using the Client API to get access to the Datacatalog service. The DatasetStore component makes it easy to find a dataset, see the relations between datasets and add datasets to the LayerControl. The DatasetStore component shows all the details of a dataset including information about the related sources (like WMS and more) and the owner of a dataset.
 
 Basic implementation (not needed if the layerControl is added!):
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
-import { Databutik } from '@dmp/lagvaelger-client-ui'
+import { DatasetStore } from '@dmp/lagvaelger-client-ui'
 import '@dmp/lagvaelger-client-ui/style.css'
 
 const api = new Api()
@@ -223,7 +223,7 @@ api.load()
 
 In the `template` add the component with a reference to the Client API, that the component should use:
 ```html
-<Databutik :api="api"/>
+<DatasetStore :api="api"/>
 ```
 
 
