@@ -193,6 +193,30 @@ In the `template` add the component with a reference to the Client API, that the
 
 Thas is all you need.
 
+#### Options
+
+Beside adding the `api` to the component, there are multiple options to add:
+
+##### collapsed
+
+As default the LayerControl is expanded. But by adding the `collapsed` option, it is possible to force the LayerControl as collapsed instead:
+
+```html
+<LayerControl :api="api" :collapsed="true"/>
+```
+
+##### disableDataStore
+
+To remove the "Add layers" button from the LayerControl, just add `disableDataStore` like this:
+
+```html
+<LayerControl :api="api" :disableDataStore="true"/>
+```
+
+This will remove the buttom as well as the "Show metadata" button and the "Remove layer" button from each dataset in the LayerControl.
+
+##### currentResolution
+
 If you are using the OpenLayers like descibed above, you can add a reactive property with the current resolution to the component. Then the component will indicate if the dataset is visible in the current zoom level:
 ```javascript
 const currentResolution = ref<number>()
@@ -201,6 +225,18 @@ map.on('moveend', () => currentResolution.value = map.getView().getResolution())
 
 ```html
 <LayerControl :api="api" :currentResolution="currentResolution"/>
+```
+
+##### hiddenDatasets
+
+In some cases, like when using the LayerToggle compoment, you would like to hide some specific datasets in the LayerControl and in the DatasetStore. You can do this using the `hiddenDatasets` options like this:
+
+```javascript
+const layerToggleLayers = ['urn:dmp:ds:skaermkort-daempet', 'urn:dmp:ds:ortofoto-foraar-nyeste-tilgaengelige']
+```
+
+```html
+<LayerControl :api="api" :hiddenDatasets="layerToggleLayers"/>
 ```
 
 ### DatasetStore
