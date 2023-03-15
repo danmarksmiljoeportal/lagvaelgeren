@@ -172,7 +172,7 @@ The layer control component is a simple, user friendly UI that gives the user th
 
 <img width="735" alt="image" src="https://user-images.githubusercontent.com/3703683/223683566-80f5932f-fe38-4676-a168-301979a8c423.png">
 
-The content of the [LayerControl](#layercontrol) can be modified by the application if needed. But it is possible to add datasets to the UI by using the DataStore component.
+The content of the [LayerControl](#layercontrol) can be modified by the application if needed. But it is possible to add datasets to the UI by using the [DatasetStore](#datasetstore) component.
 
 Basic implementation:
 ```javascript
