@@ -205,12 +205,12 @@ As default the [LayerControl](#layercontrol) is expanded. But by adding the `col
 <LayerControl :api="api" :collapsed="true"/>
 ```
 
-##### disableDataStore
+##### disableDatasetStore
 
-To remove the "Add layers" button from the [LayerControl](#layercontrol), just add `disableDataStore` like this:
+To remove the "Add layers" button from the [LayerControl](#layercontrol), just add `disableDatasetStore` like this:
 
 ```html
-<LayerControl :api="api" :disableDataStore="true"/>
+<LayerControl :api="api" :disableDatasetStore="true"/>
 ```
 
 This will remove the buttom as well as the "Show metadata" button and the "Remove layer" button from each dataset in the [LayerControl](#layercontrol).
