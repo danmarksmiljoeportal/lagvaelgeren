@@ -24,4 +24,20 @@ As detailed in the API documentation, the REST API adheres to the [JSON-API stan
 
 If you are familiar with GraphQL you might note that there are some similarities in the scope and goals of these specifications. The largest difference between these two specifications is that JSON-API is more RESTful and HTTP native than GraphQL. One detail that have shown to cause confusion and/or concern is that JSON-API does not inline related data in a nested structure, instead it is flattened out structurally by id linkage in the payload. For more information consult [this](https://jsonapi.org/format/#fetching-includes) section of the JSON-API specification and for more background over this design choice you can find a comprehensive discussion [here](https://github.com/json-api/json-api/issues/1089).
 
+## Custom query parameters
+
+In addition to standard JSON-API query string parameters the API has some additional parameters for all resources for localization and usage tracking support.
+
+### Localization
+
+* `locale` - Can be set to da-DK and en-US. Default is da-DK.
+
+### Usage tracking
+
+To better understand and support the usage of the datakatalog service a set of optional usage tracking information can be supplied by the caller.
+
+* `orgname` - Name of org owning the calling application fx. DMP.
+* `appname` - Name of calling application fx. Arealdata, QGIS.
+* `componentname` - Name of calling system component fx. LV or DB.
+* `appurlname` - Loation URL of calling application.
 
