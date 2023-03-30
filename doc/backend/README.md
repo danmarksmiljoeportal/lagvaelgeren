@@ -30,14 +30,15 @@ In addition to standard JSON-API query string parameters the API has some additi
 
 ### Localization
 
+The content of the datakatalog service is by default in Danish but English can optionally be requested. Note that Danish text will still be returned if translation is missing.
+
 * `locale` - Can be set to da-DK and en-US. Default is da-DK.
 
 ### Usage tracking
 
-To better understand and support the usage of the datakatalog service a set of optional usage tracking information can be supplied by the caller.
+To better understand and support the usage of the datakatalog service a set of optional anonymised usage tracking information can be supplied by the caller. We recommend to use them in general as it will be helpful to support the use of the service better, also in case of any technical issues.
 
 * `orgname` - Name of org owning the calling application fx. DMP.
 * `appname` - Name of calling application fx. Arealdata, QGIS.
 * `componentname` - Name of calling system component fx. LV or DB.
 * `appurlname` - Loation URL of calling application.
-
