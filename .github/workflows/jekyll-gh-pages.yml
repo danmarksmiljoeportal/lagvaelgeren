@@ -35,10 +35,8 @@ jobs:
         with:
           source: ./doc
           destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './static'
+      - name: Copy static content
+        run: cp ./static/* ._site/ -r
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
