@@ -2,7 +2,7 @@
 
 ## Client API
 
-As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic that has been used to implement [LayerControl](#layercontrol) and the [DatasetStore](#datasetstore). This package also has API documentation which can be [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/index.html). The client API models the data in the catalog service and handles all requests for the service. Furthermore it includes several helper functions that can be used creating applications. 
+As an alternative to accessing the DKS service directly a JavaScript/TypeScript API has been developed and packaged as an npm package. It is the same logic that has been used to implement [LayerControl](#layercontrol) and the [DatasetStore](#datasetstore). This package also has API documentation which can be [here](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/). The client API models the data in the catalog service and handles all requests for the service. Furthermore it includes several helper functions that can be used creating applications. 
 
 ### Install
 To install the Client API use npm like this:
@@ -19,7 +19,7 @@ import { Api } from '@dmp/lagvaelger-client-api'
 const api = new Api()
 ```
 
-See the [Client API documentation](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Api.html) for detailed information.
+See the [Client API documentation](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/classes/Api.html) for detailed information.
 
 The Client API and the components can be used with or without a map. Normally it is used in combination with a map. A map can be created using a variety of map libraries. The most common is [OpenLayers](https://openlayers.org/) and the Client API is build around OpenLayers to make it easy to use. Other libraries, like [MapLibre](https://maplibre.org/) can be used, but you need to do more of the implementation youself.
 
@@ -36,7 +36,7 @@ Then only renderable datasets will be available to the user.
 
 ### DatasetState
 
-The default active datasets are defined by adding a [datasetState](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/interfaces/_internal_.DatasetState.html) like this:
+The default active datasets are defined by adding a [datasetState](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/interfaces/_internal_.DatasetState.html) like this:
 
 ```javascript
 import { Api } from '@dmp/lagvaelger-client-api'
@@ -58,7 +58,7 @@ Call the `api.load()` method to initialize the state of the active datasets. Cha
 api.load()
 ```
 
-If you want a specifik state and ignore the datasetState in the local storage in the browser, add the [datasetState](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/interfaces/_internal_.DatasetState.html) as the argument to the load method like this:
+If you want a specifik state and ignore the datasetState in the local storage in the browser, add the [datasetState](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/interfaces/_internal_.DatasetState.html) as the argument to the load method like this:
 ```javascript
 api.load([
   { 
@@ -96,11 +96,11 @@ map.addLayer(api.getOlGroup())
 
 The `layerGroup` is a collection that the Client API is maintaining. By adding the layers as a group, the Client API can change and reorder the internal layers as needed.
 
-On each dataset, there are a [getOlLayer](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Dataset.html#getOlLayer) method that will create an OpenLayers layer. This can be used if you are creating your own layer control or a more specific map like an overview map.
+On each dataset, there are a [getOlLayer](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/classes/Dataset.html#getOlLayer) method that will create an OpenLayers layer. This can be used if you are creating your own layer control or a more specific map like an overview map.
 
 ### Events
 
-If the application need to know when something changes in the Client API, there at multiple event to listen to. Read more [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/classes/Api.html#on). There are events directly on the API but there are also events on each dataset.
+If the application need to know when something changes in the Client API, there at multiple event to listen to. Read more [here](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/classes/Api.html#on). There are events directly on the API but there are also events on each dataset.
 
 ### Query
 
@@ -133,7 +133,7 @@ saveToQgs({
   datasets,
 })
 ```
-Read more about the option [here](https://b1109udvlagvaelgersto.blob.core.windows.net/demo/doc/api/functions/saveToQgs.html).
+Read more about the option [here]https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/functions/saveToQgs.html).
 
 ### Locale
 
