@@ -31,3 +31,4 @@ The underlying data model used in DataDeling is formally documented [here](doc/d
 ## FAQ
 
 - For spatial datasets EPSG:25832 is assumed. Other projections aren't supported at this time.
+
