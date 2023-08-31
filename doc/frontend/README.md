@@ -133,7 +133,7 @@ saveToQgs({
   datasets,
 })
 ```
-Read more about the option [here]https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/functions/saveToQgs.html).
+Read more about the option [here](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/functions/saveToQgs.html).
 
 ### Locale
 
