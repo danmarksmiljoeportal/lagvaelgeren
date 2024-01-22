@@ -23,6 +23,8 @@ See the [Client API documentation](https://danmarksmiljoeportal.github.io/lagvae
 
 The Client API and the components can be used with or without a map. Normally it is used in combination with a map. A map can be created using a variety of map libraries. The most common is [OpenLayers](https://openlayers.org/) and the Client API is build around OpenLayers to make it easy to use. Other libraries, like [MapLibre](https://maplibre.org/) can be used, but you need to do more of the implementation youself.
 
+### onlyRenderable
+
 The Datacatalog contains some datasets, that are not renderable, like zip-file. If the Client API is purely used for map rendering, you need to add the `onlyRenderable` when instantiating the Client API like this:
 
 ```javascript
@@ -34,7 +36,7 @@ const api = new Api({
 ```
 Then only renderable datasets will be available to the user.
 
-### DatasetState
+### datasetState
 
 The default active datasets are defined by adding a [datasetState](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/interfaces/_internal_.DatasetState.html) like this:
 
@@ -67,6 +69,22 @@ api.load([
     opacity: 0.5,
   }
 ])
+```
+
+### locale
+
+By default the locale is `dk-DK` but it is possible to get the metadata and the components in `en-US` like this:
+
+```javascript
+const api = new Api({
+  locale: 'en-US',
+})
+```
+
+Furthermore you can dynamically change the locale with:
+
+```javascript
+api.setLocale('en-US')
 ```
 
 ### OpenLayers
@@ -134,22 +152,6 @@ saveToQgs({
 })
 ```
 Read more about the option [here](https://danmarksmiljoeportal.github.io/lagvaelgeren/dmp-lagvaelger-api/typedoc/1.2.0/functions/saveToQgs.html).
-
-### Locale
-
-By default the locale is `dk-DK` but it is possible to get the metadata and the components in `en-US` like this:
-
-```javascript
-const api = new Api({
-  locale: 'en-US',
-})
-```
-
-Furthermore you can dynamically change the locale with:
-
-```javascript
-api.setLocale('en-US')
-```
 
 ### Custom datasets
 
